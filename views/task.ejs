@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management</title>
+  <link rel="stylesheet" href="/css/tasks.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="task-form">
+      <h1>Add Task</h1>
+      <form action="/tasks" method="POST">
+        <label for="task">Task:</label>
+        <input type="text" id="task" name="task" required>
+        <br>
+        <button type="submit">Add Task</button>
+      </form>
+    </div>
+
+    <div class="task-list">
+      <h1>Task List</h1>
+      <ul>
+        <% tasks.forEach((task) => { %>
+        <li>
+          <input type="checkbox" id="<%= task.id %>" name="taskDone" <% if (task.done) { %>checked<% } %>>
+          <label for="<%= task.id %>"><%= task.task %></label>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </main>
+</body>
+
+</html>
